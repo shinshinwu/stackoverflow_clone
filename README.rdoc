@@ -1,4 +1,1 @@
-Work in progress of DBC version of stack overflow
-
-Tests:
-Should test for uniqueness?
+Stackover flow clone with AJAX and text editor preview
