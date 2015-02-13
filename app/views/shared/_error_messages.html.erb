@@ -1,0 +1,10 @@
+<% if @question.errors.any? %>
+  <h3>
+    The form contains <%= pluralize(@quesiton.error.count, "error") %>
+  </h3>
+  <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

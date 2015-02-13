@@ -1,0 +1,47 @@
+<% provide(:title, 'All Questions') %>
+
+<div class="wrapper">
+  <div class="quote">
+    <h1>Quote of the day</h1>
+    <i>"<%= @quote %>"</i>
+  </div>
+
+  <h1>All Posted Questions</h1>
+  <h2>Total Questions: <%= @questions.count %></h2>
+
+
+  <ol>
+    <div class="questions">
+      <% @questions.each do |question| %>
+        <%= render partial: 'question', locals: {question: question} %>
+        <% end %>
+    </div>
+  </ol>
+
+
+  <h1>Create a new question</h1>
+
+  <div class="newQuestion">
+
+    <%= form_for(@question, remote: true) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.submit "Submit my question" %>
+
+    <% end %>
+  </div>
+
+  <h3>Question Preview</h3>
+  <div class="liveDisplay">
+
+    <h4>Title:</h4> <div id="questionTitle"></div>
+    <h4>Content:</h4> <div id="questionContent"></div>
+
+  </div>
+
+</div>

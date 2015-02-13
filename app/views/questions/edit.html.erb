@@ -1,0 +1,17 @@
+<% provide(:title, @question.title) %>
+<h1>Edit Your Question</h1>
+
+<div class="newQuestion">
+
+  <%= form_for(@question) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "Submit my question" %>
+
+  <% end %>

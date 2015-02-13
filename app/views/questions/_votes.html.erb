@@ -1,0 +1,3 @@
+Votes: <%= question.votes %> - <%= link_to question.title, question %>
+(<%= link_to "Upvote", upvote_question_path(question.id), remote:true, method: :patch %>,
+<%= link_to "Downvote", downvote_question_path(question.id), remote:true, method: :patch %>)

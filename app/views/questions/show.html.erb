@@ -1,0 +1,43 @@
+<% provide(:title, @question.title) %>
+<div class="questions">
+
+  Question Title: <%= @question.title %>
+  <br>
+  Question Content: <%= @question.content %>
+  <br>
+  Edit Your Question: <%= link_to "Edit", edit_question_path(@question.id) %>
+  <br>
+  Delete Your Question: <%= link_to "Delete", @question, method: :delete, data: { confirm: "Are you sure you want to delete this question?"} %>
+</div>
+<br>
+All available answers
+<br>
+
+  <h3>There are in total of <%= @question.answers.count %> to this question</h3>
+  <ol>
+    <div class="answers">
+      <% @answers.each do |answer| %>
+        <%= render partial: 'answers/answer', locals: {answer: answer} %>
+      <% end %>
+    </div>
+  </ol>
+  <%= will_paginate @answers %>
+<% if @question.answers.count == 0 %>
+  Sorry, there is currently no answers to this question. Post yours!
+<% end %>
+
+
+<div class="newAnswer">
+
+  <%= form_for(@answer, url: question_answers_path(@question.id), remote: true) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "Submit my answer" %>
+
+  <% end %>
+</div>

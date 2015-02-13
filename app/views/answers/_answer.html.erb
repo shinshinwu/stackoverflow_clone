@@ -1,0 +1,13 @@
+<li id="answer-<%= answer.id %>">
+  <div id="answer-votes-<%= answer.id %>">
+    <%= render partial: 'answers/votes', locals: {answer: answer} %>
+  </div>
+  <br>
+  Answer Title: <%= answer.title %>
+  <br>
+  Answer Content: <%= answer.content %>
+  <br>
+  Posted on: <%= answer.created_at %>
+  (<%= link_to "Upvote", upvote_question_answer_path(question_id: answer.question.id, answer_id: answer.id), method: :patch, remote: true %>,
+    <%= link_to "Downvote", downvote_question_answer_path(question_id: answer.question.id, answer_id: answer.id), method: :patch, remote: true %>)
+</li>
